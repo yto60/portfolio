@@ -2,12 +2,10 @@
   <div class="container">
     <div>
       <Logo />
-      <h1 class="title">
-        yto60
-      </h1>
       <h2 class="subtitle">
-        portfolio
+        yto60.dev
       </h2>
+      <div>工事中です</div>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">
           Documentation
@@ -38,6 +36,9 @@ export default class Index extends Vue {}
 
 <style lang="scss">
 .container {
+  font-family: YuGothic, 'Yu Gothic', 'Quicksand', 'Source Sans Pro',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -47,8 +48,6 @@ export default class Index extends Vue {}
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -61,10 +60,10 @@ export default class Index extends Vue {}
   font-size: 42px;
   color: #526488;
   word-spacing: 5px;
-  padding-bottom: 15px;
+  padding: 25px 0 15px 0;
 }
 
 .links {
-  padding-top: 15px;
+  padding-top: 35px;
 }
 </style>
