@@ -5,12 +5,13 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@typescript-eslint/parser'
   },
   extends: [
     'eslint:recommended',
     'plugin:vue/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
+    '@nuxtjs/eslint-config-typescript'
   ],
   // *.vue ファイルを lint にかけるために必要
   plugins: [
@@ -18,6 +19,7 @@ module.exports = {
   ],
   // ここにカスタムルールを追加します。
   rules: {
+    'space-before-function-paren': 'off',
     'vue/max-attributes-per-line': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <logo />
+      <Logo />
       <h1 class="title">
         yto60
       </h1>
@@ -24,14 +24,16 @@
   </div>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import Logo from '@/components/Logo.vue'
 
-export default {
+@Component({
   components: {
     Logo
   }
-}
+})
+export default class Index extends Vue {}
 </script>
 
 <style>

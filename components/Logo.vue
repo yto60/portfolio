@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <svg
     class="NuxtLogo"
     width="245"
