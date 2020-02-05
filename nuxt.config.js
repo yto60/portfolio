@@ -13,8 +13,23 @@ export default {
         name: 'description',
         content: 'yto60.dev'
       }
+    ],
+    link: [
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    ],
+    script: [
+      {
+        src:
+          'https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js',
+        type: 'module',
+        body: true
+      },
+      {
+        src: 'https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js',
+        nomodule: '',
+        body: true
+      }
     ]
-    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -75,5 +90,10 @@ export default {
   },
   styleResources: {
     scss: ['~assets/scss/_variables.scss']
+  },
+  vue: {
+    config: {
+      ignoredElements: ['ion-icon']
+    }
   }
 }
