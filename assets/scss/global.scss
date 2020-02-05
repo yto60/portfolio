@@ -13,7 +13,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: $base-black;
   background-color: $base-white;
-  width: 100%; height: 100%;
+  font-size: 15px;
+}
+
+#__nuxt,
+#__layout {
+  height: 100%; width: 100%;
+  overflow: auto;
 }
 
 a {
@@ -22,7 +28,14 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: $base-darkgray;
+    color: $base-lightgray;
+  }
+}
+
+ul {
+  padding: 0;
+  li {
+    list-style: none;
   }
 }
 

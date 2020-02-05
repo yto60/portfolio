@@ -1,7 +1,7 @@
 <template lang="pug">
-  div(:class="$store.getters.getViewTypeClass")
+  div(:class="$store.getters.getViewTypeClass").is-fullheight
     TopBar(v-show="showTopBar")
-    nuxt
+    nuxt.page-wrapper
 </template>
 
 <script lang="ts">
@@ -14,7 +14,7 @@ import TopBar from '@/components/TopBar.vue'
   }
 })
 export default class DefaultLayout extends Vue {
-  readonly mobileThreshould = 768
+  readonly mobileThreshould = 700
 
   get showTopBar() {
     return this.$route.fullPath !== '/'
@@ -42,4 +42,9 @@ export default class DefaultLayout extends Vue {
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.page-wrapper {
+  height: calc(100% - 3rem); // トップバーの高さを引いた
+  padding: 1.5rem;
+}
+</style>
