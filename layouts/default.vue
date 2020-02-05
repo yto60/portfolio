@@ -3,53 +3,34 @@
     <nuxt />
   </div>
 </template>
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+@Component({
+  components: {}
+})
+export default class DefaultLayout extends Vue {
+  readonly mobileThreshould = 768
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
+  private handleResizeWindow() {
+    const width = window.innerWidth
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
+    let viewType
+    if (width <= this.mobileThreshould) {
+      viewType = 'mobile'
+    } else {
+      viewType = 'desktop'
+    }
+    if (this.$store.state.viewType !== viewType) {
+      this.$store.commit('setViewType', viewType)
+    }
+  }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+  created() {
+    this.handleResizeWindow()
+    window.addEventListener('resize', this.handleResizeWindow)
+    window.addEventListener('orientationchange', this.handleResizeWindow)
+  }
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+</script>
+<style></style>

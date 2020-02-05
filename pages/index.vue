@@ -1,69 +1,80 @@
-<template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h2 class="subtitle">
-        yto60.dev
-      </h2>
-      <div>工事中です</div>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div#index
+    img#logo(src="@/assets/logo.svg")
+    div.links
+      span.link-wrapper
+        nuxt-link(to="/profile").link.profile
+          | profile
+      span.link-wrapper
+        nuxt-link(to="/works").link.works
+          | works
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import Logo from '@/components/Logo.vue'
 
 @Component({
-  components: {
-    Logo
-  }
+  components: {}
 })
 export default class Index extends Vue {}
 </script>
 
 <style lang="scss">
-.container {
-  font-family: YuGothic, 'Yu Gothic', 'Quicksand', 'Source Sans Pro',
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#index {
   text-align: center;
 }
-
-.title {
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+#logo {
+  width: 70%;
+  max-width: 380px;
+  margin-top: 12rem;
 }
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding: 25px 0 15px 0;
-}
-
 .links {
-  padding-top: 35px;
+  margin-top: 2.5rem;
+  .link-wrapper {
+    display: inline-grid;
+    margin: 0 2rem;
+    cursor: pointer;
+    &:after {
+      content: '';
+      height: 4px;
+      background: $sky-gradient;
+      width: 0;
+      margin-left: auto;
+    }
+    &:hover:after {
+      margin-left: 0;
+    }
+  }
+  .link {
+    color: $base-darkgray;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin: 0 0.8rem 0.5rem 0.8rem;
+  }
+}
+
+// animation
+.link-wrapper:hover:after {
+  animation: link_hover 0.2s ease-out 0s forwards;
+}
+.link-wrapper:after {
+  animation: link_hover_off 0.2s ease-in 0s forwards;
+}
+
+@keyframes link_hover {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes link_hover_off {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
 }
 </style>
