@@ -19,7 +19,7 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class Index extends Vue {}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #index {
   text-align: center;
 }
