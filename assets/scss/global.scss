@@ -66,3 +66,12 @@ ul {
 .is-clickable {
   cursor: pointer;
 }
+
+// scrollbar
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: $base-lightgray;
+  border-radius: 10px;
+}
