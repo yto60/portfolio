@@ -6,7 +6,7 @@
       nuxt-link(
         v-for="(link, index) in links"
         :key="index"
-        :to="link.fullPath"
+        :to="link.path"
         :class="{'is-selected': isSelected(index)}"
         ).link
         | {{ link.name }}
@@ -19,7 +19,7 @@ import { Vue, Component } from 'vue-property-decorator'
 type LinkName = 'profile' | 'works'
 type Link = {
   name: LinkName
-  fullPath: string
+  path: string
 }
 
 @Component({
@@ -29,16 +29,17 @@ export default class TopBar extends Vue {
   readonly links: Link[] = [
     {
       name: 'profile',
-      fullPath: '/profile'
+      path: '/profile'
     },
     {
       name: 'works',
-      fullPath: '/works'
+      path: '/works'
     }
   ]
 
   isSelected(index: number): boolean {
-    return this.$route.fullPath === this.links[index].fullPath
+    const rootPath = '/' + this.$route.path.split('/')[1]
+    return rootPath === this.links[index].path
   }
 }
 </script>
