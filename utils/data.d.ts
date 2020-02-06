@@ -13,7 +13,7 @@ export interface Product {
   id?: number
   name: string
   category: WorkCategory
-  summary?: string | null
+  summary?: string
   description: string
   links?: Link[]
   cardImage: string

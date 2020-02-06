@@ -4,16 +4,16 @@
       WorksList(:selectedIndex="id" v-if="$store.state.viewType === 'desktop'")
     div.work-details-wrapper
       div.work-details
-        img(:src="`/img/${work.logo}`").logo
+        img(v-if="work.logo" :src="`/img/${work.logo}`").logo
         h3
           | {{ work.name }}
         div.description(v-html="work.description")
-        div.links
+        div.links(v-if="work.links")
           span(v-for="link in work.links").link
             | {{ link.summary }}
             a(:href="link.url" target="_blank")
               ion-icon(name="open")
-        div.sub-images
+        div.sub-images(v-if="work.images")
           div.image(v-for="image in work.images")
             img(:src="`/img/${image.url}`")
             div(v-if="image.description" v-html="image.description").image-description

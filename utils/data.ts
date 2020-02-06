@@ -33,19 +33,6 @@ export const works: WorksData = [
         description: 'traP1logo 2019/12/18<br />お題: 白昼夢にさよならを'
       }
     ]
-  },
-  {
-    name: 'logo',
-    category: 'design',
-    summary: '個人で作ったロゴなど',
-    description: 'プロダクト以外で作ったロゴなどのまとめです。',
-    cardImage: 'logo_0.svg', // TODO あとで変更する
-    images: [
-      {
-        url: 'logo_0.svg',
-        description: 'traP1logo 2019/12/18<br />お題: 白昼夢にさよならを'
-      }
-    ]
   }
 ]
 

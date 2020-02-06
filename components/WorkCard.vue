@@ -4,7 +4,7 @@
     div.card-footer
       div.name
         | {{ work.name }}
-      div.summary
+      div.summary(v-if="work.summary")
         | {{ work.summary }}
 
 </template>
