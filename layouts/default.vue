@@ -44,7 +44,11 @@ export default class DefaultLayout extends Vue {
 
 <style lang="scss" scoped>
 .page-wrapper {
+  position: absolute;
+  top: 3rem; // トップバーの分
   height: calc(100% - 3rem); // トップバーの高さを引いた
   padding: 1.5rem;
+  box-sizing: border-box; // paddingを含める
+  overflow-y: auto;
 }
 </style>

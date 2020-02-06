@@ -50,6 +50,8 @@ export default class TopBar extends Vue {
   width: 100%;
   height: 3rem;
   display: flex;
+  position: absolute;
+  z-index: 100;
 }
 .home {
   font-size: 1.8rem;
