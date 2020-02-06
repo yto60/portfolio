@@ -48,6 +48,7 @@ export default class WorksId extends Vue {
 <style lang="scss" scoped>
 .works-id {
   width: 100%;
+  display: flex;
 }
 .works-list-wrapper {
   height: 100%;
@@ -55,10 +56,10 @@ export default class WorksId extends Vue {
   float: left;
 }
 .work-details-wrapper {
-  float: right;
-  width: 95%;
+  width: 100%;
   text-align: center;
-  margin-top: 2rem;
+  padding-top: 2rem;
+  height: calc(100% - 2rem); // padding-top
   .work-details {
     img.logo {
       width: 50%;
@@ -74,9 +75,9 @@ export default class WorksId extends Vue {
       }
     }
     .sub-images {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       .image {
-        margin: 1rem auto;
+        margin: 1.3rem auto;
         width: 90%;
         max-width: 430px;
         img,
@@ -98,10 +99,11 @@ export default class WorksId extends Vue {
     border-right: 3px solid $main-blue;
   }
   .work-details-wrapper {
-    width: 62%;
-    max-width: calc(100% - 276px - 3rem);
+    overflow-y: auto;
+    padding-left: 1.5rem; // 右側にpage-wrapperがあるので左右対象になるよ うに
     .work-details {
-      width: 90%;
+      width: 62%;
+      max-width: calc(100% - 276px - 3rem);
       margin: auto;
     }
   }

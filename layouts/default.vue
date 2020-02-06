@@ -47,6 +47,7 @@ export default class DefaultLayout extends Vue {
   position: absolute;
   top: 3rem; // トップバーの分
   height: calc(100% - 3rem); // トップバーの高さを引いた
+  width: 100%;
   padding: 1.5rem;
   box-sizing: border-box; // paddingを含める
   overflow-y: auto;

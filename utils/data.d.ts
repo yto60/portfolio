@@ -4,6 +4,7 @@ interface Link {
 }
 interface Image {
   url: string
+  type?: 'video' | 'image' // default: 'image'
   height?: number
   width?: number
   description?: string

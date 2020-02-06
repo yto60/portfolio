@@ -62,7 +62,7 @@ export const works: WorksData = [
     category: 'design',
     summary: '作ったロゴなど',
     description:
-      '個人で作ったロゴなどのまとめです。<br />使用ツール: Figma, Adobe Illustrator',
+      '個人で作ったロゴなどのまとめです。使用ツール: Figma, Adobe Illustrator',
     cardImage: 'logo_0.svg', // TODO あとで変更する
     images: [
       {
