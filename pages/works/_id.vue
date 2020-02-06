@@ -15,7 +15,8 @@
               ion-icon(name="open")
         div.sub-images(v-if="work.images")
           div.image(v-for="image in work.images")
-            img(:src="`/img/${image.url}`")
+            video(v-if="image.type === 'video'" :src="`/img/${image.url}`" controls)
+            img(v-else :src="`/img/${image.url}`")
             div(v-if="image.description" v-html="image.description").image-description
 
 </template>
@@ -78,7 +79,8 @@ export default class WorksId extends Vue {
         margin: 1rem auto;
         width: 90%;
         max-width: 430px;
-        img {
+        img,
+        video {
           width: 100%;
         }
         .image-description {
