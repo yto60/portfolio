@@ -10,6 +10,7 @@ interface Image {
 }
 
 export interface Product {
+  id?: number
   name: string
   category: WorkCategory
   summary?: string | null

@@ -26,10 +26,23 @@ export const works: WorksData = [
     category: 'design',
     summary: '個人で作ったロゴなど',
     description: 'プロダクト以外で作ったロゴなどのまとめです。',
-    cardImage: '', // TODO
+    cardImage: 'logo_0.svg', // TODO あとで変更する
     images: [
       {
-        url: '1logo_19_1218.svg',
+        url: 'logo_0.svg',
+        description: 'traP1logo 2019/12/18<br />お題: 白昼夢にさよならを'
+      }
+    ]
+  },
+  {
+    name: 'logo',
+    category: 'design',
+    summary: '個人で作ったロゴなど',
+    description: 'プロダクト以外で作ったロゴなどのまとめです。',
+    cardImage: 'logo_0.svg', // TODO あとで変更する
+    images: [
+      {
+        url: 'logo_0.svg',
         description: 'traP1logo 2019/12/18<br />お題: 白昼夢にさよならを'
       }
     ]
@@ -39,7 +52,13 @@ export const works: WorksData = [
 export const workCategories: WorkCategory[] = ['web', 'design']
 
 const getFilteredWorks = (category: WorkCategory) =>
-  works.filter(work => work.category === category)
+  works
+    .map((work, index) => {
+      const ret = work
+      ret.id = index
+      return ret
+    })
+    .filter(work => work.category === category)
 
 export const categorizedWorks = {
   web: getFilteredWorks('web'),
