@@ -1,8 +1,10 @@
 <template lang="pug">
   div#top-bar
-    nuxt-link(to="/").home
+    nuxt-link(to="/" v-if="showHomeButton").left-top-icon
       ion-icon(name="home")
-    div.links
+    div(v-else @click="$router.go(-1)").left-top-icon
+      ion-icon(name="arrow-back").back
+    div.links(v-show="showHomeButton")
       nuxt-link(
         v-for="(link, index) in links"
         :key="index"
@@ -37,6 +39,14 @@ export default class TopBar extends Vue {
     }
   ]
 
+  get showHomeButton() {
+    const path = this.$route.path
+    return (
+      this.$store.state.viewType === 'desktop' ||
+      this.links.map(link => link.path).includes(path)
+    )
+  }
+
   isSelected(index: number): boolean {
     const rootPath = '/' + this.$route.path.split('/')[1]
     return rootPath === this.links[index].path
@@ -53,7 +63,7 @@ export default class TopBar extends Vue {
   position: absolute;
   z-index: 100;
 }
-.home {
+.left-top-icon {
   font-size: 1.8rem;
   width: 1.8rem;
   margin: auto 1rem;
@@ -67,7 +77,7 @@ export default class TopBar extends Vue {
   margin-bottom: 0;
   transform: translateX(
     -(1.8rem + 1rem * 2) / 2
-  ); // 中央揃えにするためにhomeの幅の半分だけ戻す
+  ); // 中央揃えにするために .left-top-icon の幅の半分だけ戻す
   .link {
     padding: 0 0.7rem;
     color: $base-lightgray;
