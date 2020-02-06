@@ -19,6 +19,7 @@ module.exports = {
   ],
   // ここにカスタムルールを追加します。
   rules: {
+    'arrow-parens': 'off',
     'space-before-function-paren': 'off',
     'vue/max-attributes-per-line': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
