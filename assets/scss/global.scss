@@ -26,11 +26,23 @@ a {
   font-weight: bold;
   color: $point-red;
   text-decoration: none;
+  width: fit-content;
+
+  // 内部リンク
+  &.nuxt-link {
+    color: $point-skyblue;
+  }
 
   &:hover {
     color: $base-lightgray;
   }
+
+  ion-icon{
+    vertical-align: middle;
+    margin-right:0.1rem;
+  }
 }
+
 
 ul {
   padding: 0;
