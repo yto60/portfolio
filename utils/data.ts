@@ -7,17 +7,49 @@ export const works: WorksData = [
     logo: 'anke-to_logo.svg',
     summary: '部内向けアンケートツール',
     description:
-      '所属しているサークル (traP) で使っている、部内向けアンケートツールです。<br />UIとロゴのデザイン、クライアントサイドの実装を担当しました。',
+      '所属しているサークル (traP) で制作した、部内向けアンケートツールです。<br />UIとロゴのデザイン、クライアントサイドの実装を担当しました。<br /><br />イベントへの参加募集や制作チームへの所属希望調査など、部内でアンケートを取る際、それまでは主に Google Forms を使用していました。しかし、部員が毎回名前を入力する必要があること、誰が回答済みかが把握しにくいこと、回答の共有手段が限られていることなど、不便な点が多いと感じていたため、これらの問題を解決するために一から開発を行うことにしました。<br />Ansibleによって管理された部のサーバーで運用しています。<br />初めてのWebアプリケーション開発だったため、進め方やコードの保守性など反省点も多くあり、現在はリファクタリングや部員からのフィードバックを反映した改善などを行っています。',
+    labels: [
+      {
+        key: 'lang',
+        name: '言語・フレームワーク',
+        value: 'Vue.js / JavaScript / SCSS'
+      },
+      {
+        key: 'period',
+        name: '開発期間',
+        value: '2018.7 〜 2019.3 (現在も運用中)'
+      }
+    ],
     links: [
       {
         summary: 'Github Repository',
         url: 'https://github.com/traPtitech/anke-to'
       }
     ],
-    cardImage: 'anke-to_0.png',
+    cardImage: 'anke-to_0_respond.png',
     images: [
       {
-        url: 'anke-to_0.png'
+        url: 'anke-to_0_respond.png',
+        description: '回答画面'
+      },
+      {
+        url: 'anke-to_1_information.png',
+        description: 'アンケートの情報を見られます'
+      },
+      {
+        url: 'anke-to_2_results.png',
+        description:
+          'アンケートの結果です。公開範囲を設定したり、MarkdownやCSVでコピーやダウンロードを行うこともできます。'
+      },
+      {
+        url: 'anke-to_3_modal.png',
+        description:
+          'ユーザー認証は部内SNSであるtraQによるOAuth認証を用いていて、ユーザーの中からアンケートの対象者や管理者を選ぶことができます。',
+        width: '70%'
+      },
+      {
+        url: 'anke-to_4_bot.png',
+        description: '誰かがアンケートを作成すると、traQに自動で投稿されます。'
       }
     ]
   },
@@ -43,11 +75,11 @@ export const works: WorksData = [
     logo: 'tsundoku_logo.svg',
     summary: '書籍管理ツール',
     description:
-      '未読のままの「積ん読」本や読み終わった本を管理するツールです。<br />クライアントサイドの実装を担当しました。', // TODO
+      '未読のままの「積ん読」本を管理するツールです。<br />クライアントサイドの実装に関わっています。', // TODO
     links: [
       {
         summary: 'ツンドク',
-        url: 'https://github.com/traPtitech/anke-to'
+        url: 'https://tsun-doku.app/'
       }
     ],
     cardImage: 'tsundoku_0.png',
@@ -61,8 +93,14 @@ export const works: WorksData = [
     name: 'logo',
     category: 'design',
     summary: '作ったロゴなど',
-    description:
-      '個人で作ったロゴなどのまとめです。使用ツール: Figma, Adobe Illustrator',
+    description: '個人で作ったロゴなどのまとめです。',
+    labels: [
+      {
+        key: 'tools',
+        name: '使用ツール',
+        value: 'Figma, Adobe Illustrator'
+      }
+    ],
     cardImage: 'logo_0.svg', // TODO あとで変更する
     images: [
       {
@@ -70,11 +108,11 @@ export const works: WorksData = [
         description: 'traP1logo 2019/12/18<br />お題: 白昼夢にさよならを'
       },
       {
-        url: 'logo_191204.svg',
+        url: 'logo_191204.png',
         description: 'traP1logo 2019/12/04<br />お題: 神様のメモ帳'
       },
       {
-        url: 'logo_191203.svg',
+        url: 'logo_191203.png',
         description: '人生の目標'
       },
       {

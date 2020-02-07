@@ -8,15 +8,23 @@
         h3
           | {{ work.name }}
         div.description(v-html="work.description")
+        ul.labels(v-if="work.labels")
+          li(v-for="label in work.labels")
+            b
+              | {{ label.name }}
+            | : {{ label.value }}
         div.links(v-if="work.links")
           span(v-for="link in work.links").link
-            | {{ link.summary }}
             a(:href="link.url" target="_blank")
+              | {{ link.summary }}
               ion-icon(name="open")
         div.sub-images(v-if="work.images")
           div.image(v-for="image in work.images")
             video(v-if="image.type === 'video'" :src="`/img/${image.url}`" controls)
-            img(v-else :src="`/img/${image.url}`")
+            img(
+              v-else :src="`/img/${image.url}`"
+              :style="`width: ${image.width ? image.width : ''}; height: ${image.height ? image.height : ''};`"
+              )
             div(v-if="image.description" v-html="image.description").image-description
 
 </template>
@@ -64,8 +72,12 @@ export default class WorksId extends Vue {
     img.logo {
       width: 50%;
     }
-    .description {
+    .description,
+    .labels {
       text-align: left;
+    }
+    .labels {
+      font-size: 0.9rem;
     }
     .links {
       margin-top: 1rem;

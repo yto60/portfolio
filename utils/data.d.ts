@@ -5,9 +5,15 @@ interface Link {
 interface Image {
   url: string
   type?: 'video' | 'image' // default: 'image'
-  height?: number
-  width?: number
+  height?: string
+  width?: string
   description?: string
+}
+
+interface Label {
+  key: string
+  name: string
+  value: string
 }
 
 export interface Product {
@@ -16,6 +22,7 @@ export interface Product {
   category: WorkCategory
   summary?: string
   description: string
+  labels?: Label[]
   links?: Link[]
   cardImage: string
   logo?: string
