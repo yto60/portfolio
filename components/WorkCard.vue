@@ -65,7 +65,7 @@ export default class WorkCard extends Vue {
   background-color: rgba(200, 239, 251, 0.9);
   .name {
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: $main-blue;
   }
   .summary {

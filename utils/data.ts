@@ -75,7 +75,7 @@ export const works: WorksData = [
     logo: 'tsundoku_logo.svg',
     summary: '書籍管理ツール',
     description:
-      '未読のままの「積ん読」本を管理するツールです。<br />クライアントサイドの実装に関わっています。', // TODO
+      '未読のままの「積ん読」本を管理するツールです。<br />クライアントサイドで関わっています。', // TODO
     links: [
       {
         summary: 'ツンドク',
@@ -131,6 +131,35 @@ export const works: WorksData = [
       {
         url: 'logo_190320.svg',
         description: 'traP1logo 2019/03/20<br />お題: in the rain'
+      }
+    ]
+  },
+  {
+    name: 'traP 新歓パンフレット2019',
+    category: 'design',
+    description:
+      '東工大デジタル創作同好会の2019年度新歓パンフレットです。サイバーな雰囲気を前面に押し出しながら、サークルの雰囲気や多岐にわたる活動内容が伝わるよう工夫しました。',
+    labels: [
+      {
+        key: 'tools',
+        name: '使用ツール',
+        value: 'Gravit Designer'
+      },
+      {
+        key: 'term',
+        name: '制作期間',
+        value: '2019.2 〜 2019.3'
+      }
+    ],
+    cardImage: 'traPpamphlet_0_front.png',
+    images: [
+      {
+        url: 'traPpamphlet_0_front.png',
+        description: '表'
+      },
+      {
+        url: 'traPpamphlet_1_back.png',
+        description: '裏'
       }
     ]
   }
