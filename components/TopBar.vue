@@ -40,7 +40,7 @@ export default class TopBar extends Vue {
   ]
 
   get showHomeButton() {
-    const path = this.$route.path
+    const path = this.$route.path.replace(/\/$/, '') // 末尾に '/' がついていたら取り除く
     return (
       this.$store.state.viewType === 'desktop' ||
       this.links.map(link => link.path).includes(path)

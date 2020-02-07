@@ -49,6 +49,7 @@ export default class WorkCard extends Vue {
 .image,
 .card-footer {
   width: 100%;
+  height: 35%;
 }
 .image {
   z-index: 0;
@@ -60,6 +61,7 @@ export default class WorkCard extends Vue {
   position: absolute;
   padding: 0.5rem 1rem;
   box-sizing: border-box; // paddingも含める
+  height: fit-content;
   background-color: rgba(200, 239, 251, 0.9);
   .name {
     font-weight: bold;

@@ -55,6 +55,7 @@ export default class WorksList extends Vue {
   h3,
   .work-card {
     width: 100%;
+    height: auto;
   }
   h3 {
     margin-top: 0;

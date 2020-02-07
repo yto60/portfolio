@@ -102,8 +102,8 @@ export default class WorksId extends Vue {
     overflow-y: auto;
     padding-left: 1.5rem; // 右側にpage-wrapperがあるので左右対象になるよ うに
     .work-details {
-      width: 62%;
-      max-width: calc(100% - 276px - 3rem);
+      width: 90%;
+      max-width: 660px;
       margin: auto;
     }
   }
