@@ -1,6 +1,6 @@
 <template lang="pug">
   div.work-details
-    img(v-if="work.logo" :src="`/img/${work.logo}`").logo
+    img(v-if="work.logo" v-lazy="`/img/${work.logo}`").logo
     h3
       | {{ work.name }}
     div.description(v-html="work.description")
@@ -18,7 +18,7 @@
       div.image(v-for="image in work.images")
         video(v-if="image.type === 'video'" :src="`/img/${image.url}`" controls)
         img(
-          v-else :src="`/img/${image.url}`"
+          v-else v-lazy="`/img/${image.url}`"
           :style="`width: ${image.width ? image.width : ''}; height: ${image.height ? image.height : ''};`"
           )
         div(v-if="image.description" v-html="image.description").image-description

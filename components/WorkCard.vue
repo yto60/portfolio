@@ -1,6 +1,6 @@
 <template lang="pug">
   nuxt-link(:to="`/works/${work.id}`" :class="{ 'is-selected': isSelected }").work-card.is-clickable
-    img(:src="`/img/${work.cardImage}`").image
+    img(v-lazy="`/img/${work.cardImage}`").image
     div.card-footer
       div.name
         | {{ work.name }}
