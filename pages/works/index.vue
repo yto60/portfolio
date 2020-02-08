@@ -1,16 +1,10 @@
-<template lang="pug">
-  div#works
-    WorksList
-</template>
+<template lang="pug"></template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import WorksList from '@/components/WorksList.vue'
 
 @Component({
-  components: {
-    WorksList
-  }
+  components: {}
 })
 export default class WorksIndex extends Vue {
   created() {
