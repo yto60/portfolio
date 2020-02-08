@@ -1,8 +1,8 @@
 <template lang="pug">
   div#top-bar
-    nuxt-link(to="/" v-if="showHomeButton").left-top-icon
+    nuxt-link(to="/" v-show="showHomeButton").left-top-icon
       ion-icon(name="home")
-    div(v-else @click="$router.go(-1)").left-top-icon
+    nuxt-link(v-show="!showHomeButton" :to="parentRoutePath").left-top-icon
       ion-icon(name="arrow-back").back
     div.links(v-show="showHomeButton")
       nuxt-link(
@@ -45,6 +45,10 @@ export default class TopBar extends Vue {
       this.$store.state.viewType === 'desktop' ||
       this.links.map(link => link.path).includes(path)
     )
+  }
+
+  get parentRoutePath() {
+    return this.$route.fullPath.slice(0, this.$route.fullPath.lastIndexOf('/'))
   }
 
   isSelected(index: number): boolean {
