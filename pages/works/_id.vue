@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { works } from '@/utils/data'
+import works from '@/assets/data.json'
 import WorksList from '@/components/WorksList.vue'
 
 @Component({

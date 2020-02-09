@@ -2,7 +2,7 @@
   div#top-bar
     nuxt-link(to="/" v-show="showHomeButton").left-top-icon
       ion-icon(name="home")
-    nuxt-link(v-show="!showHomeButton" :to="parentRoutePath").left-top-icon
+    nuxt-link(v-show="showBackButton" :to="parentRoutePath").left-top-icon
       ion-icon(name="arrow-back").back
     div.links(v-show="showHomeButton")
       nuxt-link(
@@ -39,16 +39,20 @@ export default class TopBar extends Vue {
     }
   ]
 
-  get showHomeButton() {
-    const path = this.$route.path.replace(/\/$/, '') // 末尾に '/' がついていたら取り除く
+  get showBackButton() {
     return (
-      this.$store.state.viewType === 'desktop' ||
-      this.links.map(link => link.path).includes(path)
+      this.links.map(link => link.path).includes(this.parentRoutePath) &&
+      this.$store.state.viewType === 'mobile'
     )
   }
 
+  get showHomeButton() {
+    return !this.showBackButton
+  }
+
   get parentRoutePath() {
-    return this.$route.fullPath.slice(0, this.$route.fullPath.lastIndexOf('/'))
+    const fullPath = this.$route.fullPath.replace(/\/$/, '') // 末尾に '/' がついていたら取り除く
+    return fullPath.slice(0, fullPath.lastIndexOf('/'))
   }
 
   isSelected(index: number): boolean {
@@ -86,16 +90,18 @@ export default class TopBar extends Vue {
     padding: 0 0.7rem;
     color: $base-lightgray;
     display: inline-grid;
+    &:after {
+      content: '';
+      height: 4px;
+      margin-top: 0.3rem;
+      margin-left: -0.7rem;
+      width: calc(100% + 1.4rem);
+    }
     &.is-selected {
       color: $point-skyblue;
       font-weight: bold;
       &:after {
-        content: '';
         background-color: $point-skyblue;
-        height: 4px;
-        margin-top: 0.3rem;
-        margin-left: -0.7rem;
-        width: calc(100% + 1.4rem);
       }
     }
   }

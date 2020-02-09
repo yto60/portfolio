@@ -1,3 +1,5 @@
+import works from './assets/data.json'
+
 export default {
   mode: 'spa',
   /*
@@ -94,6 +96,11 @@ export default {
   vue: {
     config: {
       ignoredElements: ['ion-icon']
+    }
+  },
+  generate: {
+    routes() {
+      return works.map((_, index) => `/works/${index}`)
     }
   }
 }

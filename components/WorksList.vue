@@ -7,7 +7,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { works, workCategories, categorizedWorks } from '@/utils/data'
+import works from '@/assets/data.json'
+import { workCategories, categorizedWorks } from '@/utils/data'
 import WorkCard from '@/components/WorkCard.vue'
 
 @Component({
