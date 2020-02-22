@@ -106,5 +106,9 @@ export default {
   router: {
     trailingSlash: true,
     middleware: 'redirect'
+  },
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in'
   }
 }
