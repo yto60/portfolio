@@ -3,7 +3,7 @@
     div.works-list-wrapper(v-if="showWorksList")
       WorksList(:selectedIndex="id")
     div.work-details-wrapper(v-if="showWorkDetails")
-      nuxt-child
+      nuxt-child(:key="id")
 </template>
 
 <script lang="ts">

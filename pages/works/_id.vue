@@ -36,7 +36,8 @@ import WorksList from '@/components/WorksList.vue'
   },
   validate({ params }) {
     return /^\d+$/.test(params.id) && Number(params.id) < works.length
-  }
+  },
+  transition: 'fade'
 })
 export default class WorksId extends Vue {
   get id(): number {
@@ -50,6 +51,14 @@ export default class WorksId extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 .work-details {
   img.logo {
     width: 50%;
