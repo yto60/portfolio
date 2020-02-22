@@ -100,7 +100,11 @@ export default {
   },
   generate: {
     routes() {
-      return works.map((_, index) => `/works/${index}`)
+      return works.map((_, index) => `/works/${index}/`)
     }
+  },
+  router: {
+    trailingSlash: true,
+    middleware: 'redirect'
   }
 }

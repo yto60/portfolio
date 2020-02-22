@@ -1,5 +1,5 @@
 <template lang="pug">
-  nuxt-link(:to="{name: 'works-id', params: { id: work.id }}" :class="{ 'is-selected': isSelected }").work-card.is-clickable
+  nuxt-link(:to="`/works/${work.id}/`" :class="{ 'is-selected': isSelected }").work-card.is-clickable
     img(v-lazy="`/img/${work.cardImage}`").image
     div.card-footer
       div.name
