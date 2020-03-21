@@ -7,12 +7,10 @@
         h4
           | (60° / 60deg)
         div.link-buttons
-          a(href="https://twitter.com/piover3_rad").twitter
-            ion-icon(name="logo-twitter")
-          a(href="https://github.com/yto60").github
-            ion-icon(name="logo-github")
-          a(href="https://trap.jp/author/60/").trap-blog
-            ion-icon(name="list-box")
+          a(v-for="link in personalLinks" :key="link.name" :class="link.name" :href="link.url" target="_blank")
+            ion-icon(:name="link.iconName")
+            span.label
+              | {{ link.label }}
         div.contact
           ion-icon(name="mail")
           a(href="mailto:mail@yto60.dev")
@@ -25,9 +23,6 @@
             | 問題解決や効率化が好きです。
             br
             | webプログラミング (主にクライアントサイド) と、デザインをやっています。
-            nuxt-link(to="/works").nuxt-link
-              ion-icon(name="arrow-forward")
-              | 作ったもの
         h3
           | 所属
         div
@@ -39,21 +34,49 @@
         ul
           li
             | 東工大デジタル創作同好会traP
-            a(href="https://trap.jp/")
+            a(href="https://trap.jp/" target="_blank")
               ion-icon(name="open")
           li
             | 東工大デザイン研究会
-            a(href="https://twitter.com/titechdesignlab")
+            a(href="https://twitter.com/titechdesignlab" target="_blank")
               ion-icon(name="open")
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
+interface PersonalLink {
+  name: string
+  label: string
+  iconName: string
+  url: string
+}
+
 @Component({
   components: {}
 })
-export default class Profile extends Vue {}
+export default class Profile extends Vue {
+  readonly personalLinks: PersonalLink[] = [
+    {
+      name: 'twitter',
+      label: 'twitter',
+      iconName: 'logo-twitter',
+      url: 'https://twitter.com/piover3_rad'
+    },
+    {
+      name: 'github',
+      label: 'GitHub',
+      iconName: 'logo-github',
+      url: 'https://github.com/yto60'
+    },
+    {
+      name: 'trap-blog',
+      label: 'blog',
+      iconName: 'list-box',
+      url: 'https://trap.jp/author/60/'
+    }
+  ]
+}
 </script>
 
 <style lang="scss" scoped>
@@ -84,18 +107,23 @@ export default class Profile extends Vue {}
   .link-buttons {
     margin-top: 2rem;
     a {
-      width: 3rem;
-      height: 3rem;
       font-size: 2rem;
-      box-sizing: border-box;
       display: inline-flex;
+      flex-direction: column;
       margin: 0.5rem;
-      border: 4px solid $point-red;
+      border-color: $point-red;
       &:hover {
         border-color: $base-lightgray;
       }
       ion-icon {
+        border: 4px solid;
+        border-color: inherit;
+        padding: 0.3rem;
         margin: auto;
+      }
+      .label {
+        font-size: 0.8rem;
+        margin-top: 0.3rem;
       }
     }
   }
