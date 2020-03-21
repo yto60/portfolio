@@ -50,6 +50,18 @@
     "logo": "hitonome_logo.svg",
     "summary": "SNS共有・チャット機能つきTODOリスト",
     "description": "SNS (Twitter) 共有と、グループ・チャット機能のついたTODOリストです。「人の目」を意識することで、タスクの消化を促します。<br />UIとロゴのデザイン、クライアントサイドの実装を担当しました。",
+    "labels": [
+      {
+        "key": "lang",
+        "name": "言語・フレームワーク",
+        "value": "Vue.js / TypeScript / SCSS / PHP"
+      },
+      {
+        "key": "period",
+        "name": "開発期間",
+        "value": "2019.11 〜 2020.1"
+      }
+    ],
     "cardImage": "hitonome_0.png",
     "images": [
       {
