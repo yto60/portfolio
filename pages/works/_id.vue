@@ -69,6 +69,7 @@ export default class WorksId extends Vue {
     text-align: left;
   }
   .labels {
+    margin: 1rem 0;
     font-size: 0.9rem;
   }
   .links {
