@@ -4,12 +4,12 @@
     "category": "web",
     "logo": "anke-to_logo.svg",
     "summary": "部内向けアンケートツール",
-    "description": "所属しているサークル (traP) で制作した、部内向けアンケートツールです。<br />UIとロゴのデザイン、クライアントサイドの実装を担当しました。<br /><br />イベントへの参加募集や制作チームへの所属希望調査など、部内でアンケートを取る際、それまでは主に Google Forms を使用していました。しかし、部員が毎回名前を入力する必要があること、誰が回答済みかが把握しにくいこと、回答の共有手段が限られていることなど、不便な点が多いと感じていたため、これらの問題を解決するために一から開発を行うことにしました。<br />Ansibleによって管理された部のサーバーで運用しています。<br />初めてのWebアプリケーション開発だったため、進め方やコードの保守性など反省点も多くあり、現在はリファクタリングや部員からのフィードバックを反映した改善などを行っています。",
+    "description": "所属しているサークル (traP) で制作した、部内向けアンケートツールです。<br />UIとロゴのデザイン、クライアントサイドの実装を担当しました。",
     "labels": [
       {
         "key": "lang",
         "name": "言語・フレームワーク",
-        "value": "Vue.js / JavaScript / SCSS"
+        "value": "Vue.js / JavaScript / SCSS / Go"
       },
       {
         "key": "period",
@@ -19,8 +19,8 @@
     ],
     "links": [
       {
-        "summary": "Github Repository",
-        "url": "https://github.com/traPtitech/anke-to"
+        "summary": "部内製アンケートサービス anke-to の紹介",
+        "url": "https://trap.jp/post/955/"
       }
     ],
     "cardImage": "anke-to_0_respond.png",
@@ -31,7 +31,7 @@
       },
       {
         "url": "anke-to_1_information.png",
-        "description": "アンケートの情報を見られます"
+        "description": "アンケート詳細画面"
       },
       {
         "url": "anke-to_2_results.png",
@@ -39,12 +39,8 @@
       },
       {
         "url": "anke-to_3_modal.png",
-        "description": "ユーザー認証は部内SNSであるtraQによるOAuth認証を用いていて、ユーザーの中からアンケートの対象者や管理者を選ぶことができます。",
+        "description": "全traPメンバーのリストからアンケートの対象者や管理者を選ぶことができます。",
         "width": "70%"
-      },
-      {
-        "url": "anke-to_4_bot.png",
-        "description": "誰かがアンケートを作成すると、traQに自動で投稿されます。"
       }
     ]
   },
