@@ -49,10 +49,11 @@ export default class WorkCard extends Vue {
 .image,
 .card-footer {
   width: 100%;
-  height: 35%;
 }
 .image {
   z-index: 0;
+  object-fit: cover;
+  object-position: top;
 }
 .card-footer {
   z-index: 1;
