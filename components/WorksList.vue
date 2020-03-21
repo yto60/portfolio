@@ -43,14 +43,14 @@ export default class WorksList extends Vue {
   &.is-mobile {
     margin: auto;
     width: 95%;
+    max-width: 22rem;
     .work-card {
       height: 12rem;
     }
   }
   &.is-desktop {
     overflow-y: auto;
-    width: 40%;
-    min-width: 260px;
+    width: 16rem;
     padding-right: 1rem;
     .work-card {
       height: 10rem;

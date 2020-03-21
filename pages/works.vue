@@ -68,4 +68,11 @@ export default class Works extends Vue {
     }
   }
 }
+
+.is-mobile {
+  .works-list-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 </style>
