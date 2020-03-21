@@ -10,7 +10,7 @@
           | {{ label.name }}
         | : {{ label.value }}
     div.links(v-if="work.links")
-      span(v-for="link in work.links").link
+      div(v-for="link in work.links").link
         a(:href="link.url" target="_blank")
           | {{ link.summary }}
           ion-icon(name="open")
@@ -62,6 +62,7 @@ export default class WorksId extends Vue {
 .work-details {
   img.logo {
     width: 50%;
+    max-height: 8rem;
   }
   .description,
   .labels {
