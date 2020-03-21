@@ -73,6 +73,10 @@
       {
         "summary": "ツンドク",
         "url": "https://tsun-doku.app/"
+      },
+      {
+        "summary": "Github Repository",
+        "url": "https://github.com/unipota/tsundoku"
       }
     ],
     "cardImage": "tsundoku_0.png",
