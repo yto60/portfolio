@@ -1,12 +1,19 @@
-<template lang="pug">
-  NuxtLink(:to="`/works/${work.id}/`" :class="{ 'is-selected': isSelected }").work-card.is-clickable
-    img(:src="`/img/${work.cardImage}`").image
-    div.card-footer
-      div.name
-        | {{ work.name }}
-      div.summary(v-if="work.summary")
-        | {{ work.summary }}
-
+<template>
+  <NuxtLink
+    :to="`/works/${work.id}/`"
+    :class="{ 'is-selected': isSelected }"
+    class="work-card is-clickable"
+  >
+    <img :src="`/img/${work.cardImage}`" class="image" />
+    <div class="card-footer">
+      <div class="name">
+        {{ work.name }}
+      </div>
+      <div class="summary" v-if="work.summary">
+        {{ work.summary }}
+      </div>
+    </div>
+  </NuxtLink>
 </template>
 
 <script setup lang="ts">

@@ -1,8 +1,15 @@
-<template lang="pug">
-  div.works-list(:class="viewTypeClass")
-    div(v-for="category in workCategories").wrapper
-      h3 {{ category }}
-      WorkCard(v-for="(work, index) in categorizedWorks[category]" :key="index" :work="work").work-card
+<template>
+  <div class="works-list" :class="viewTypeClass">
+    <div v-for="category in workCategories" class="wrapper">
+      <h3>{{ category }}</h3>
+      <WorkCard
+        v-for="(work, index) in categorizedWorks[category]"
+        :key="index"
+        :work="work"
+        class="work-card"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +17,6 @@ import { useViewStore } from '~/stores/useViewStore'
 import works from '@/assets/data.json'
 import { workCategories, categorizedWorks } from '@/utils/data'
 import WorkCard from '@/components/WorkCard.vue'
-import { computed } from 'vue'
 
 interface Props {
   selectedIndex?: number

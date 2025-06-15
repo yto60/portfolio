@@ -1,28 +1,48 @@
-<template lang="pug">
-  div.work-details
-    img(v-if="work.logo" :src="`/img/${work.logo}`").logo
-    h3
-      | {{ work.name }}
-    div.description(v-html="work.description")
-    ul.labels(v-if="work.labels")
-      li(v-for="label in work.labels")
-        b
-          | {{ label.name }}
-        | : {{ label.value }}
-    div.links(v-if="work.links")
-      div(v-for="link in work.links").link
-        a(:href="link.url" target="_blank")
-          | {{ link.summary }}
-          ion-icon(name="open")
-    div.sub-images(v-if="work.images")
-      div.image(v-for="image in work.images")
-        video(v-if="image.type === 'video'" :src="`/img/${image.url}`" controls)
-        img(
-          v-else :src="`/img/${image.url}`"
-          :style="`width: ${image.width ? image.width : ''}; height: ${image.height ? image.height : ''};`"
-          )
-        div(v-if="image.description" v-html="image.description").image-description
-
+<template>
+  <div class="work-details">
+    <img v-if="work.logo" :src="`/img/${work.logo}`" class="logo" />
+    <h3>
+      {{ work.name }}
+    </h3>
+    <div class="description" v-html="work.description"></div>
+    <ul class="labels" v-if="work.labels">
+      <li v-for="label in work.labels">
+        <b>
+          {{ label.name }}
+        </b>
+        : {{ label.value }}
+      </li>
+    </ul>
+    <div class="links" v-if="work.links">
+      <div v-for="link in work.links" class="link">
+        <a :href="link.url" target="_blank">
+          {{ link.summary }}
+          <ion-icon name="open"></ion-icon>
+        </a>
+      </div>
+    </div>
+    <div class="sub-images" v-if="work.images">
+      <div class="image" v-for="image in work.images">
+        <video
+          v-if="image.type === 'video'"
+          :src="`/img/${image.url}`"
+          controls
+        ></video>
+        <img
+          v-else
+          :src="`/img/${image.url}`"
+          :style="`width: ${image.width ? image.width : ''}; height: ${
+            image.height ? image.height : ''
+          };`"
+        />
+        <div
+          v-if="image.description"
+          v-html="image.description"
+          class="image-description"
+        ></div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,18 +1,27 @@
-<template lang="pug">
-  div#top-bar
-    NuxtLink(to="/" v-show="showHomeButton").left-top-icon
-      ion-icon(name="home")
-    NuxtLink(v-show="showBackButton" :to="parentRoutePath").left-top-icon
-      ion-icon(name="arrow-back").back
-    div.links(v-show="showHomeButton")
-      NuxtLink(
+<template>
+  <div id="top-bar">
+    <NuxtLink to="/" v-show="showHomeButton" class="left-top-icon">
+      <ion-icon name="home"></ion-icon>
+    </NuxtLink>
+    <NuxtLink
+      v-show="showBackButton"
+      :to="parentRoutePath"
+      class="left-top-icon"
+    >
+      <ion-icon name="arrow-back" class="back"></ion-icon>
+    </NuxtLink>
+    <div class="links" v-show="showHomeButton">
+      <NuxtLink
         v-for="(link, index) in links"
         :key="index"
         :to="link.path"
-        :class="{'is-selected': isSelected(index)}"
-        ).link
-        | {{ link.name }}
-
+        :class="{ 'is-selected': isSelected(index) }"
+        class="link"
+      >
+        {{ link.name }}
+      </NuxtLink>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

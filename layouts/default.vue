@@ -1,7 +1,8 @@
-<template lang="pug">
-  div(:class="viewTypeClass").is-fullheight
-    TopBar(v-show="showTopBar")
-    slot.page-wrapper
+<template>
+  <div :class="viewTypeClass" class="is-fullheight">
+    <TopBar v-show="showTopBar" />
+    <slot class="page-wrapper" />
+  </div>
 </template>
 
 <script setup lang="ts">

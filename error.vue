@@ -1,6 +1,7 @@
-<template lang="pug">
-  div
-    h2 {{ message }}
+<template>
+  <div>
+    <h2>{{ message }}</h2>
+  </div>
 </template>
 
 <script setup lang="ts">

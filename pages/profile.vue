@@ -1,45 +1,62 @@
-<template lang="pug">
-  div#profile
-    div.about-wrapper.wrapper(:class="viewTypeClass")
-      div.about
-        h2
-          | yto
-        h4
-          | (60° / 60deg)
-        div.link-buttons
-          a(v-for="link in personalLinks" :key="link.name" :class="link.name" :href="link.url" target="_blank")
-            ion-icon(:name="link.iconName")
-            span.label
-              | {{ link.label }}
-        div.contact
-          ion-icon(name="mail")
-          a(href="mailto:mail@yto60.dev")
-            | mail@yto60.dev
-    div.information-wrapper.wrapper(:class="viewTypeClass")
-      div.information
-        h3
-          | 自己紹介
-        div
-            | 問題解決や効率化が好きです。
-            br
-            | webプログラミング (主にクライアントサイド) と、デザインをやっています。
-        h3
-          | 所属
-        div
-          | 東京工業大学 情報理工学院 B3
-          br
-          | (2021年3月卒業予定)
-        h3
-          | サークル活動
-        ul
-          li
-            | 東工大デジタル創作同好会traP
-            a(href="https://trap.jp/" target="_blank")
-              ion-icon(name="open")
-          li
-            | 東工大デザイン研究会
-            a(href="https://twitter.com/titechdesignlab" target="_blank")
-              ion-icon(name="open")
+<template>
+  <div id="profile">
+    <div class="about-wrapper wrapper" :class="viewTypeClass">
+      <div class="about">
+        <h2>yto</h2>
+        <h4>(60° / 60deg)</h4>
+        <div class="link-buttons">
+          <a
+            v-for="link in personalLinks"
+            :key="link.name"
+            :class="link.name"
+            :href="link.url"
+            target="_blank"
+          >
+            <ion-icon :name="link.iconName"></ion-icon>
+            <span class="label">
+              {{ link.label }}
+            </span>
+          </a>
+        </div>
+        <div class="contact">
+          <ion-icon name="mail"></ion-icon>
+          <a href="mailto:mail@yto60.dev"> mail@yto60.dev </a>
+        </div>
+      </div>
+    </div>
+    <div class="information-wrapper wrapper" :class="viewTypeClass">
+      <div class="information">
+        <h3>自己紹介</h3>
+        <div>
+          問題解決や効率化が好きです。
+          <br />
+          webプログラミング (主にクライアントサイド)
+          と、デザインをやっています。
+        </div>
+        <h3>所属</h3>
+        <div>
+          東京工業大学 情報理工学院 B3
+          <br />
+          (2021年3月卒業予定)
+        </div>
+        <h3>サークル活動</h3>
+        <ul>
+          <li>
+            東工大デジタル創作同好会traP
+            <a href="https://trap.jp/" target="_blank">
+              <ion-icon name="open"></ion-icon>
+            </a>
+          </li>
+          <li>
+            東工大デザイン研究会
+            <a href="https://twitter.com/titechdesignlab" target="_blank">
+              <ion-icon name="open"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

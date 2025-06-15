@@ -1,9 +1,12 @@
-<template lang="pug">
-  div#works(:class="viewTypeClass")
-    div.works-list-wrapper(v-if="showWorksList")
-      WorksList(:selectedIndex="id")
-    div.work-details-wrapper(v-if="showWorkDetails")
-      NuxtPage(:key="id")
+<template>
+  <div id="works" :class="viewTypeClass">
+    <div class="works-list-wrapper" v-if="showWorksList">
+      <WorksList :selectedIndex="id" />
+    </div>
+    <div class="work-details-wrapper" v-if="showWorkDetails">
+      <NuxtPage :key="id" />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

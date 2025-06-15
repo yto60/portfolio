@@ -1,13 +1,15 @@
-<template lang="pug">
-  div#index
-    img#logo(src="@/assets/logo.svg")
-    div.links
-      span.link-wrapper
-        NuxtLink(to="/profile").link.profile
-          | profile
-      span.link-wrapper
-        NuxtLink(to="/works").link.works
-          | works
+<template>
+  <div id="index">
+    <img id="logo" src="@/assets/logo.svg" />
+    <div class="links">
+      <span class="link-wrapper">
+        <NuxtLink to="/profile" class="link profile"> profile </NuxtLink>
+      </span>
+      <span class="link-wrapper">
+        <NuxtLink to="/works" class="link works"> works </NuxtLink>
+      </span>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

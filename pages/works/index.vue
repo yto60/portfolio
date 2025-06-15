@@ -1,4 +1,4 @@
-<template lang="pug"></template>
+<template></template>
 
 <script setup lang="ts">
 import { useViewStore } from '~/stores/useViewStore'
