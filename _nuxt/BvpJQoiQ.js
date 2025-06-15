@@ -1,0 +1,1 @@
+import{T as i,B as a,g as r,U as n}from"./DeM7GBL0.js";const u=i("view",()=>{const e=a("mobile"),s=r(()=>`is-${e.value}`),o=t=>{e.value=t};return{viewType:n(e),viewTypeClass:s,setViewType:o}});export{u};

@@ -1,0 +1,1 @@
+import{u as t}from"./BvpJQoiQ.js";import{f as r,m as s,p as n}from"./DeM7GBL0.js";const _=r({__name:"index",setup(u){const e=t(),o=s();return n(()=>{e.viewType==="desktop"&&o.push("/works/0/")}),(p,a)=>null}});export{_ as default};
