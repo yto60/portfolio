@@ -1,6 +1,6 @@
 <template lang="pug">
-  nuxt-link(:to="`/works/${work.id}/`" :class="{ 'is-selected': isSelected }").work-card.is-clickable
-    img(v-lazy="`/img/${work.cardImage}`").image
+  NuxtLink(:to="`/works/${work.id}/`" :class="{ 'is-selected': isSelected }").work-card.is-clickable
+    img(:src="`/img/${work.cardImage}`").image
     div.card-footer
       div.name
         | {{ work.name }}
@@ -9,24 +9,19 @@
 
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
-import { Product } from '@/utils/data.d'
+<script setup lang="ts">
+import type { Product } from '@/utils/data'
 
-@Component({
-  components: {}
-})
-export default class WorkCard extends Vue {
-  @Prop({
-    type: Object,
-    required: true
-  })
-  readonly work!: Product
-
-  get isSelected() {
-    return this.work.id === Number(this.$route.params.id)
-  }
+interface Props {
+  work: Product
 }
+
+const props = defineProps<Props>()
+const route = useRoute()
+
+const isSelected = computed(() => {
+  return props.work.id === Number(route.params.id)
+})
 </script>
 
 <style lang="scss" scoped>

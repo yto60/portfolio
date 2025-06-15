@@ -1,6 +1,6 @@
 <template lang="pug">
   div#profile
-    div.about-wrapper.wrapper(:class="$store.getters.getViewTypeClass")
+    div.about-wrapper.wrapper(:class="viewTypeClass")
       div.about
         h2
           | yto
@@ -15,7 +15,7 @@
           ion-icon(name="mail")
           a(href="mailto:mail@yto60.dev")
             | mail@yto60.dev
-    div.information-wrapper.wrapper(:class="$store.getters.getViewTypeClass")
+    div.information-wrapper.wrapper(:class="viewTypeClass")
       div.information
         h3
           | 自己紹介
@@ -42,8 +42,8 @@
               ion-icon(name="open")
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+<script setup lang="ts">
+import { useViewStore } from '~/stores/useViewStore'
 
 interface PersonalLink {
   name: string
@@ -52,31 +52,30 @@ interface PersonalLink {
   url: string
 }
 
-@Component({
-  components: {}
-})
-export default class Profile extends Vue {
-  readonly personalLinks: PersonalLink[] = [
-    {
-      name: 'twitter',
-      label: 'twitter',
-      iconName: 'logo-twitter',
-      url: 'https://twitter.com/piover3_rad'
-    },
-    {
-      name: 'github',
-      label: 'GitHub',
-      iconName: 'logo-github',
-      url: 'https://github.com/yto60'
-    },
-    {
-      name: 'trap-blog',
-      label: 'blog',
-      iconName: 'list-box',
-      url: 'https://trap.jp/author/60/'
-    }
-  ]
-}
+const viewStore = useViewStore()
+
+const viewTypeClass = computed(() => viewStore.viewTypeClass)
+
+const personalLinks: PersonalLink[] = [
+  {
+    name: 'twitter',
+    label: 'twitter',
+    iconName: 'logo-twitter',
+    url: 'https://twitter.com/piover3_rad'
+  },
+  {
+    name: 'github',
+    label: 'GitHub',
+    iconName: 'logo-github',
+    url: 'https://github.com/yto60'
+  },
+  {
+    name: 'trap-blog',
+    label: 'blog',
+    iconName: 'list-box',
+    url: 'https://trap.jp/author/60/'
+  }
+]
 </script>
 
 <style lang="scss" scoped>

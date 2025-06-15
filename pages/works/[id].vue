@@ -1,6 +1,6 @@
 <template lang="pug">
   div.work-details
-    img(v-if="work.logo" v-lazy="`/img/${work.logo}`").logo
+    img(v-if="work.logo" :src="`/img/${work.logo}`").logo
     h3
       | {{ work.name }}
     div.description(v-html="work.description")
@@ -18,36 +18,34 @@
       div.image(v-for="image in work.images")
         video(v-if="image.type === 'video'" :src="`/img/${image.url}`" controls)
         img(
-          v-else v-lazy="`/img/${image.url}`"
+          v-else :src="`/img/${image.url}`"
           :style="`width: ${image.width ? image.width : ''}; height: ${image.height ? image.height : ''};`"
           )
         div(v-if="image.description" v-html="image.description").image-description
 
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+<script setup lang="ts">
 import works from '@/assets/data.json'
-import WorksList from '@/components/WorksList.vue'
 
-@Component({
-  components: {
-    WorksList
-  },
-  validate({ params }) {
-    return /^\d+$/.test(params.id) && Number(params.id) < works.length
-  },
-  transition: 'fade'
+const route = useRoute()
+
+const id = computed(() => {
+  return Number(route.params.id)
 })
-export default class WorksId extends Vue {
-  get id(): number {
-    return Number(this.$route.params.id)
-  }
 
-  get work() {
-    return works[this.id]
+const work = computed(() => {
+  return works[id.value]
+})
+
+definePageMeta({
+  validate: async (route) => {
+    return (
+      /^\d+$/.test(route.params.id as string) &&
+      Number(route.params.id) < works.length
+    )
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>

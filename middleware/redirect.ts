@@ -1,12 +1,7 @@
-import Context from '@nuxt/types'
-
-export default (context: Context.Context) => {
+export default defineNuxtRouteMiddleware((to) => {
   // 末尾に '/' がついていなかったらついているルートにリダイレクト
-  const route = context.route
-  const redirect = context.redirect
-
-  if (!route.fullPath.endsWith('/')) {
-    const nextRoute = route.fullPath + '/'
-    redirect(301, nextRoute)
+  if (!to.fullPath.endsWith('/')) {
+    const nextRoute = to.fullPath + '/'
+    return navigateTo(nextRoute, { redirectCode: 301 })
   }
-}
+})

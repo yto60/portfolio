@@ -1,45 +1,47 @@
 <template lang="pug">
-  div(:class="$store.getters.getViewTypeClass").is-fullheight
+  div(:class="viewTypeClass").is-fullheight
     TopBar(v-show="showTopBar")
-    nuxt.page-wrapper
+    slot.page-wrapper
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import TopBar from '@/components/TopBar.vue'
+<script setup lang="ts">
+import { useViewStore } from '~/stores/useViewStore'
 
-@Component({
-  components: {
-    TopBar
-  }
+const route = useRoute()
+const viewStore = useViewStore()
+
+const mobileThreshold = 700
+
+const viewTypeClass = computed(() => viewStore.viewTypeClass)
+
+const showTopBar = computed(() => {
+  return route.fullPath !== '/'
 })
-export default class DefaultLayout extends Vue {
-  readonly mobileThreshould = 700
 
-  get showTopBar() {
-    return this.$route.fullPath !== '/'
+const handleResizeWindow = () => {
+  const width = window.innerWidth
+
+  let viewType: 'mobile' | 'desktop'
+  if (width <= mobileThreshold) {
+    viewType = 'mobile'
+  } else {
+    viewType = 'desktop'
   }
-
-  private handleResizeWindow() {
-    const width = window.innerWidth
-
-    let viewType
-    if (width <= this.mobileThreshould) {
-      viewType = 'mobile'
-    } else {
-      viewType = 'desktop'
-    }
-    if (this.$store.state.viewType !== viewType) {
-      this.$store.commit('setViewType', viewType)
-    }
-  }
-
-  created() {
-    this.handleResizeWindow()
-    window.addEventListener('resize', this.handleResizeWindow)
-    window.addEventListener('orientationchange', this.handleResizeWindow)
+  if (viewStore.viewType !== viewType) {
+    viewStore.setViewType(viewType)
   }
 }
+
+onMounted(() => {
+  handleResizeWindow()
+  window.addEventListener('resize', handleResizeWindow)
+  window.addEventListener('orientationchange', handleResizeWindow)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResizeWindow)
+  window.removeEventListener('orientationchange', handleResizeWindow)
+})
 </script>
 
 <style lang="scss" scoped>

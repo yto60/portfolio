@@ -3,21 +3,14 @@
     img#logo(src="@/assets/logo.svg")
     div.links
       span.link-wrapper
-        nuxt-link(to="/profile").link.profile
+        NuxtLink(to="/profile").link.profile
           | profile
       span.link-wrapper
-        nuxt-link(to="/works").link.works
+        NuxtLink(to="/works").link.works
           | works
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-
-@Component({
-  components: {}
-})
-export default class Index extends Vue {}
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
 #index {

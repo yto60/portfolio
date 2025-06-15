@@ -1,11 +1,11 @@
 <template lang="pug">
   div#top-bar
-    nuxt-link(to="/" v-show="showHomeButton").left-top-icon
+    NuxtLink(to="/" v-show="showHomeButton").left-top-icon
       ion-icon(name="home")
-    nuxt-link(v-show="showBackButton" :to="parentRoutePath").left-top-icon
+    NuxtLink(v-show="showBackButton" :to="parentRoutePath").left-top-icon
       ion-icon(name="arrow-back").back
     div.links(v-show="showHomeButton")
-      nuxt-link(
+      NuxtLink(
         v-for="(link, index) in links"
         :key="index"
         :to="link.path"
@@ -15,8 +15,8 @@
 
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+<script setup lang="ts">
+import { useViewStore } from '~/stores/useViewStore'
 
 type LinkName = 'profile' | 'works'
 type Link = {
@@ -24,41 +24,39 @@ type Link = {
   path: string
 }
 
-@Component({
-  components: {}
+const route = useRoute()
+const viewStore = useViewStore()
+
+const links: Link[] = [
+  {
+    name: 'profile',
+    path: '/profile'
+  },
+  {
+    name: 'works',
+    path: '/works'
+  }
+]
+
+const parentRoutePath = computed(() => {
+  const fullPath = route.fullPath.replace(/\/$/, '') // 末尾に '/' がついていたら取り除く
+  return fullPath.slice(0, fullPath.lastIndexOf('/'))
 })
-export default class TopBar extends Vue {
-  readonly links: Link[] = [
-    {
-      name: 'profile',
-      path: '/profile'
-    },
-    {
-      name: 'works',
-      path: '/works'
-    }
-  ]
 
-  get showBackButton() {
-    return (
-      this.links.map(link => link.path).includes(this.parentRoutePath) &&
-      this.$store.state.viewType === 'mobile'
-    )
-  }
+const showBackButton = computed(() => {
+  return (
+    links.map((link) => link.path).includes(parentRoutePath.value) &&
+    viewStore.viewType === 'mobile'
+  )
+})
 
-  get showHomeButton() {
-    return !this.showBackButton
-  }
+const showHomeButton = computed(() => {
+  return !showBackButton.value
+})
 
-  get parentRoutePath() {
-    const fullPath = this.$route.fullPath.replace(/\/$/, '') // 末尾に '/' がついていたら取り除く
-    return fullPath.slice(0, fullPath.lastIndexOf('/'))
-  }
-
-  isSelected(index: number): boolean {
-    const rootPath = '/' + this.$route.path.split('/')[1]
-    return rootPath === this.links[index].path
-  }
+const isSelected = (index: number): boolean => {
+  const rootPath = '/' + route.path.split('/')[1]
+  return rootPath === links[index].path
 }
 </script>
 
@@ -84,7 +82,7 @@ export default class TopBar extends Vue {
   margin: auto;
   margin-bottom: 0;
   transform: translateX(
-    -(1.8rem + 1rem * 2) / 2
+    calc(-1 * (1.8rem + 1rem * 2) / 2)
   ); // 中央揃えにするために .left-top-icon の幅の半分だけ戻す
   .link {
     padding: 0 0.7rem;

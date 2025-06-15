@@ -1,37 +1,30 @@
 <template lang="pug">
-  div#works(:class="$store.getters.getViewTypeClass")
+  div#works(:class="viewTypeClass")
     div.works-list-wrapper(v-if="showWorksList")
       WorksList(:selectedIndex="id")
     div.work-details-wrapper(v-if="showWorkDetails")
-      nuxt-child(:key="id")
+      NuxtPage(:key="id")
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import WorksList from '@/components/WorksList.vue'
+<script setup lang="ts">
+import { useViewStore } from '~/stores/useViewStore'
 
-@Component({
-  components: {
-    WorksList
-  }
+const route = useRoute()
+const viewStore = useViewStore()
+
+const id = computed<number | undefined>(() => {
+  return route.params.id ? Number(route.params.id) : undefined
 })
-export default class Works extends Vue {
-  get id(): number | undefined {
-    return this.$route.params.id ? Number(this.$route.params.id) : undefined
-  }
 
-  get showWorksList() {
-    return (
-      this.$store.state.viewType === 'desktop' || this.$route.name === 'works'
-    )
-  }
+const viewTypeClass = computed(() => viewStore.viewTypeClass)
 
-  get showWorkDetails() {
-    return (
-      this.$store.state.viewType === 'desktop' || this.$route.name !== 'works'
-    )
-  }
-}
+const showWorksList = computed(() => {
+  return viewStore.viewType === 'desktop' || route.name === 'works'
+})
+
+const showWorkDetails = computed(() => {
+  return viewStore.viewType === 'desktop' || route.name !== 'works'
+})
 </script>
 
 <style lang="scss" scoped>

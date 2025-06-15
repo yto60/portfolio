@@ -1,18 +1,16 @@
 <template lang="pug"></template>
 
-<script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+<script setup lang="ts">
+import { useViewStore } from '~/stores/useViewStore'
 
-@Component({
-  components: {}
-})
-export default class Works extends Vue {
-  created() {
-    if (this.$store.state.viewType === 'desktop') {
-      this.$router.push('/works/0/')
-    }
+const viewStore = useViewStore()
+const router = useRouter()
+
+onMounted(() => {
+  if (viewStore.viewType === 'desktop') {
+    router.push('/works/0/')
   }
-}
+})
 </script>
 
 <style lang="scss" scoped></style>

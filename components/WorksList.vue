@@ -1,39 +1,25 @@
 <template lang="pug">
-  div.works-list(:class="$store.getters.getViewTypeClass")
+  div.works-list(:class="viewTypeClass")
     div(v-for="category in workCategories").wrapper
       h3 {{ category }}
       WorkCard(v-for="(work, index) in categorizedWorks[category]" :key="index" :work="work").work-card
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+<script setup lang="ts">
+import { useViewStore } from '~/stores/useViewStore'
 import works from '@/assets/data.json'
 import { workCategories, categorizedWorks } from '@/utils/data'
 import WorkCard from '@/components/WorkCard.vue'
+import { computed } from 'vue'
 
-@Component({
-  components: {
-    WorkCard
-  }
-})
-export default class WorksList extends Vue {
-  @Prop({
-    type: Number
-  })
-  readonly selectedIndex: number | undefined
-
-  get works() {
-    return works
-  }
-
-  get workCategories() {
-    return workCategories
-  }
-
-  get categorizedWorks() {
-    return categorizedWorks
-  }
+interface Props {
+  selectedIndex?: number
 }
+
+const props = defineProps<Props>()
+const viewStore = useViewStore()
+
+const viewTypeClass = computed(() => viewStore.viewTypeClass)
 </script>
 
 <style lang="scss" scoped>
