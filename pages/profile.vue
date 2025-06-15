@@ -2,6 +2,7 @@
   <div id="profile">
     <div class="about-wrapper wrapper" :class="viewTypeClass">
       <div class="about">
+        <img :src="profileImageUrl" alt="yto" class="avatar" />
         <h2>yto</h2>
         <h4>(60° / 60deg)</h4>
         <div class="link-buttons">
@@ -20,7 +21,7 @@
         </div>
         <div class="contact">
           <ion-icon name="mail"></ion-icon>
-          <a href="mailto:mail@yto60.dev"> mail@yto60.dev </a>
+          <a :href="`mailto:${email}`"> {{ email }} </a>
         </div>
       </div>
     </div>
@@ -28,38 +29,17 @@
       <div class="information">
         <h3>自己紹介</h3>
         <div>
-          問題解決や効率化が好きです。
-          <br />
-          webプログラミング (主にクライアントサイド)
-          と、デザインをやっています。
+          東京工業大学情報理工学院学部卒。フロントエンドを中心にweb開発をやっています。
         </div>
         <h3>所属</h3>
-        <div>
-          東京工業大学 情報理工学院 B3
-          <br />
-          (2021年3月卒業予定)
-        </div>
-        <h3>サークル活動</h3>
-        <ul>
-          <li>
-            東工大デジタル創作同好会traP
-            <a href="https://trap.jp/" target="_blank">
-              <ion-icon name="open"></ion-icon>
-            </a>
-          </li>
-          <li>
-            東工大デザイン研究会
-            <a href="https://twitter.com/titechdesignlab" target="_blank">
-              <ion-icon name="open"></ion-icon>
-            </a>
-          </li>
-        </ul>
+        <div>ピクシブ株式会社（2021.4 - 現在）</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { md5 } from 'js-md5'
 import { useViewStore } from '~/stores/useViewStore'
 
 interface PersonalLink {
@@ -93,6 +73,11 @@ const personalLinks: PersonalLink[] = [
     url: 'https://trap.jp/author/60/'
   }
 ]
+
+const email = 'mail@yto60.dev'
+const profileImageUrl = computed(() => {
+  return `https://www.gravatar.com/avatar/${md5(email)}?s=200`
+})
 </script>
 
 <style lang="scss" scoped>
@@ -108,6 +93,13 @@ const personalLinks: PersonalLink[] = [
 .about {
   text-align: center;
   margin-top: 3rem;
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $base-lightgray;
+  }
   .contact {
     margin-top: 1rem;
     display: inline-flex;
