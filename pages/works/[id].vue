@@ -46,9 +46,12 @@
 </template>
 
 <script setup lang="ts">
-import works from '@/assets/data.json'
+import type { WorksData } from '@/utils/data'
+import worksData from '@/assets/data.json'
 
 const route = useRoute()
+
+const works = worksData as WorksData
 
 const id = computed(() => {
   return Number(route.params.id)
