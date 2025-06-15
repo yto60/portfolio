@@ -33,6 +33,7 @@ const showWorkDetails = computed(() => {
 <style lang="scss" scoped>
 #works {
   width: 100%;
+  height: 100%;
   display: flex;
 }
 

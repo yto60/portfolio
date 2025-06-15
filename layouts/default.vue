@@ -1,7 +1,9 @@
 <template>
   <div :class="viewTypeClass" class="is-fullheight">
     <TopBar v-show="showTopBar" />
-    <slot class="page-wrapper" />
+    <div class="page-wrapper">
+      <slot />
+    </div>
   </div>
 </template>
 

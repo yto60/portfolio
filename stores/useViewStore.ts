@@ -4,7 +4,7 @@ export type ViewType = 'mobile' | 'desktop'
 export type ViewTypeClass = 'is-mobile' | 'is-desktop'
 
 export const useViewStore = defineStore('view', () => {
-  const viewType = ref<ViewType>('desktop')
+  const viewType = ref<ViewType>('mobile')
 
   const viewTypeClass = computed((): ViewTypeClass => `is-${viewType.value}` as ViewTypeClass)
 
